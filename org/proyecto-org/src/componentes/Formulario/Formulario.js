@@ -4,27 +4,24 @@ import ListaOpciones from "../ListaOpciones";
 import Boton from "../Boton";
 import { useState } from "react";
 
-
-const Formulario = () => {
+const Formulario = (props) => {
 
     const [nombre, actualizarNombre] = useState("")
     const [puesto, actualizarPuesto] = useState("")
     const [foto, actualizarFoto] = useState("")
     const [equipo, actualizarEquipo] = useState("")
+    const { registrarColaborador } = props
 
     const manejarEnvio = (event) => {
         event.preventDefault();
-        console.log("Manejando la vuelta pri xDSDDDD")
         let datosAEnviar = {
             nombre,
             puesto,
             foto,
             equipo
         }
-
-        console.log(datosAEnviar)
+        registrarColaborador(datosAEnviar)
     }
-
 
     return (
         <section className="formulario">
@@ -54,6 +51,7 @@ const Formulario = () => {
                 <ListaOpciones 
                     valor={equipo}
                     actualizarEquipo={actualizarEquipo}
+                    equipos={props.equipos}
                 />
                 <Boton texto="Crear" />
             </form>
