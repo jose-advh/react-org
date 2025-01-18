@@ -47,3 +47,7 @@
     right: -15px;
     top: -15px;
 }
+
+.heart {
+    cursor: pointer;
+}
